@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView"
+            android:layout_above="@+id/postWallButton">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Message"
+                    android:id="@+id/textView7"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black" />
+
+                <com.travis.rhinofit.customs.CustomEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/messageEditText"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="left|top" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Picture(Optional)"
+                    android:id="@+id/textView10"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Picture"
+                    android:id="@+id/pictureButton" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/postImageView"
+                    android:minHeight="200dp"
+                    android:minWidth="200dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Post This Messages"
+            android:id="@+id/postWallButton"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_blue_bg"
+            android:textColor="@android:color/white"
+            android:textSize="17dp" />
+
+    </RelativeLayout>
+</LinearLayout>

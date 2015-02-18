@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="@dimen/margin"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border_bg">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00 AM"
+                android:id="@+id/timeTextView"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@android:color/black"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cross Fit"
+                android:id="@+id/titleTextView"
+                android:layout_alignParentRight="false"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/timeTextView"
+                android:textColor="@android:color/black"
+                android:textSize="17dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/margin">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/descriptionTextView"
+                android:textSize="17dp"
+                android:layout_gravity="center_vertical"
+                android:text="You are reserved in this class"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRACK WOD"
+                android:id="@+id/trackwodButton"
+                android:layout_gravity="center_vertical"
+                android:background="@null"
+                android:minHeight="0dp"
+                android:maxWidth="100dp"
+                android:minWidth="100dp"
+                android:textSize="14dp"
+                android:layout_toRightOf="@+id/descriptionTextView"
+                android:textColor="@color/color_light_blue"
+                android:layout_alignBottom="@+id/descriptionTextView" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="@dimen/margin">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel Reservation"
+                    android:id="@+id/reservationButton"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:minHeight="0dp"
+                    android:textSize="14dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_light_blue" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reservationProgressBar"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel Attendance"
+                    android:id="@+id/attendanceButton"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:minHeight="0dp"
+                    android:textSize="14dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/color_light_blue"
+                    android:layout_alignParentRight="false" />
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/attendanceProgressBar"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

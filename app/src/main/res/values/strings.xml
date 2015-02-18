@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RhinoFit</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="album_name">Rhinofit</string>
+
+    <string-array name="menu_items">
+        <item>My Classes</item>
+        <item>My Reservations</item>
+        <item>My Attendance</item>
+        <item>My WODS</item>
+        <item>My Benchmarks</item>
+        <item>My Memberships</item>
+        <item>The Wall</item>
+        <item>My Profile</item>
+        <item>Log out</item>
+    </string-array>
+
+</resources>

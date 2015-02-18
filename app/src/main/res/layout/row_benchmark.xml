@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:padding="@dimen/margin"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/border_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cross Fit"
+            android:id="@+id/titleTextView"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/timeTextView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cross Fit"
+            android:id="@+id/currentScoreTextView"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/timeTextView"
+            android:layout_marginTop="@dimen/margin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cross Fit"
+            android:id="@+id/currentDateTextView"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="14dp"
+            android:layout_toLeftOf="@+id/timeTextView"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cross Fit"
+            android:id="@+id/lastScoreTextView"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_toLeftOf="@+id/timeTextView"
+            android:layout_marginTop="@dimen/margin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cross Fit"
+            android:id="@+id/lastDateTextView"
+            android:layout_alignParentRight="false"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/black"
+            android:textSize="14dp"
+            android:layout_toLeftOf="@+id/timeTextView"
+            android:layout_marginTop="4dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:id="@+id/historyButton"
+                android:layout_gravity="center_vertical|right"
+                android:background="@null"
+                android:minHeight="0dp"
+                android:textSize="14dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_light_blue"
+                android:layout_alignParentRight="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:id="@+id/updatebutton"
+                android:layout_gravity="center_vertical|right"
+                android:background="@null"
+                android:minHeight="0dp"
+                android:textSize="14dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_light_blue"
+                android:layout_alignParentRight="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

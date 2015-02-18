@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Benchmark:"
+                    android:id="@+id/textView8"
+                    android:textColor="@android:color/black"
+                    android:textSize="17dp" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/benchmarkSpinner" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date:"
+                    android:id="@+id/textView9"
+                    android:textColor="@android:color/black"
+                    android:textSize="17dp"
+                    android:layout_marginTop="@dimen/margin"
+                    android:editable="false"
+                    android:clickable="true" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical" >
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/dateEditText"
+                        android:inputType="text"
+                        android:background="@drawable/rounded_edittext"
+                        android:textColor="@android:color/black"
+                        android:hint="00/00/0000"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:layout_marginRight="4dp"
+                        android:gravity="center" />
+
+                    <ImageButton
+                        android:layout_width="32dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/dateButton"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_calendar"
+                        android:background="@null"
+                        android:scaleType="fitCenter" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Measurement:"
+                    android:id="@+id/textView12"
+                    android:textColor="@android:color/black"
+                    android:textSize="17dp"
+                    android:layout_marginTop="@dimen/margin"
+                    android:inputType="numberDecimal" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:id="@+id/measurementEditText"
+                        android:background="@drawable/rounded_edittext"
+                        android:textColor="@android:color/black"
+                        android:layout_marginRight="4dp"
+                        android:inputType="numberDecimal"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type"
+                        android:id="@+id/typeTextView"
+                        android:textColor="@android:color/black"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Delete this benchmark"
+                    android:id="@+id/deleteButton"
+                    android:background="@null"
+                    android:textColor="@color/color_light_blue"
+                    android:minHeight="0dp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:id="@+id/saveButton"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_gray_bg"
+                    android:minHeight="0dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.travis.rhinofit.customs.WaitingLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/waitingLayout"></com.travis.rhinofit.customs.WaitingLayout>
+
+    </RelativeLayout>
+</LinearLayout>

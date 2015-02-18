@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginRight="64dp"
+    android:paddingTop="8dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="0dp"
+    android:paddingBottom="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/msgTextView"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/wall_rounded_corner_blue"
+        android:layout_marginBottom="3dp" />
+
+    <com.travis.rhinofit.utils.image.SmartImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/postImageView"
+        android:src="@color/secondary_text_disabled_material_light" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="66dp"
+        android:background="@drawable/wall_userinfo_bg"
+        android:layout_marginTop="3dp">
+
+        <com.travis.rhinofit.utils.image.SmartImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:id="@+id/userImageView"
+            android:layout_margin="1dp"
+            android:src="@color/color_dark_grey" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="New Text"
+            android:id="@+id/userNameTextView"
+            android:lines="1"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+</LinearLayout>

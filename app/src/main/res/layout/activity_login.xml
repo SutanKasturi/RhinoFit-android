@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/loginLayout">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView2"
+        android:src="@drawable/kettlebell"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:id="@+id/imageView3"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RhinoFit"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="50dp"
+            android:typeface="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/emailTextView"
+            android:textColor="@android:color/white"
+            android:textSize="17dp"
+            android:layout_marginTop="8dp" />
+
+        <com.travis.rhinofit.customs.CustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textWebEmailAddress|textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailEditText"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rounded_edittext"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:id="@+id/textView2"
+            android:textColor="@android:color/white"
+            android:textSize="17dp"
+            android:layout_marginTop="8dp" />
+
+        <com.travis.rhinofit.customs.CustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/passwordEditText"
+            android:layout_marginTop="4dp"
+            android:inputType="textPassword"
+            android:background="@drawable/rounded_edittext"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:id="@+id/loginButton"
+            android:layout_gravity="right"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_gray_bg"
+            android:minHeight="0dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find a RhinoFit gym near you"
+        android:id="@+id/linkButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:textColor="#007AFF"
+        android:textSize="15dp"
+        android:minHeight="0dp"
+        android:layout_marginBottom="16dp" />
+</RelativeLayout>

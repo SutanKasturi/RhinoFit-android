@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView2"
+            android:layout_above="@+id/saveButton" >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Picture"
+                        android:id="@+id/textView13"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.utils.image.SmartImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/avatarImageView"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/avatar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="First Name"
+                        android:id="@+id/textView14"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/firstNameEditText"
+                        android:background="@drawable/rounded_edittext" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Last Name"
+                        android:id="@+id/textView15"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/lastNameEditText"
+                        android:background="@drawable/rounded_edittext" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:id="@+id/textView11"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.travis.rhinofit.customs.CustomEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="Name"
+                            android:ems="10"
+                            android:id="@+id/address1EditText"
+                            android:background="@drawable/rounded_edittext" />
+
+                        <com.travis.rhinofit.customs.CustomEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Name"
+                            android:ems="10"
+                            android:id="@+id/address2EditText"
+                            android:background="@drawable/rounded_edittext"
+                            android:layout_marginTop="8dp"
+                            android:inputType="text" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="City"
+                        android:id="@+id/textView19"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/cityEditText"
+                        android:background="@drawable/rounded_edittext"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="State/Prov"
+                        android:id="@+id/textView21"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/stateSpinner"
+                        android:background="@drawable/rounded_corner_grey"
+                        android:minHeight="40dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Zip/Postal"
+                        android:id="@+id/textView23"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/postalEditText"
+                        android:background="@drawable/rounded_edittext" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Country"
+                        android:id="@+id/textView16"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countrySpinner"
+                        android:background="@drawable/rounded_corner_grey"
+                        android:minHeight="40dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Home Phone"
+                        android:id="@+id/textView25"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/homePhoneEditText"
+                        android:background="@drawable/rounded_edittext" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile Phone"
+                        android:id="@+id/textView27"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/mobilePhoneEditText"
+                        android:background="@drawable/rounded_edittext"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="8dp" >
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:id="@+id/textView18"
+                        android:textSize="17dp"
+                        android:textColor="@android:color/black" />
+
+                    <com.travis.rhinofit.customs.CustomEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:ems="10"
+                        android:id="@+id/emailEditText"
+                        android:background="@drawable/rounded_edittext"
+                        android:inputType="textEmailAddress" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:id="@+id/saveButton"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:background="@drawable/button_blue_bg"
+            android:textColor="@android:color/white"
+            android:textSize="17dp" />
+
+    </RelativeLayout>
+</LinearLayout>
