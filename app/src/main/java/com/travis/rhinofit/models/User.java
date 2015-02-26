@@ -4,6 +4,7 @@ import android.os.Parcel;
 
 import com.travis.rhinofit.global.Constants;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -189,6 +190,24 @@ public class User extends BaseModel {
     }
 
     public JSONObject getJsonObject() {
+        try {
+            jsonObject.put(Constants.kResponseKeyUserAddress1, userAddress1);
+            jsonObject.put(Constants.kResponseKeyUserAddress2, userAddress2);
+            jsonObject.put(Constants.kResponseKeyUserCity, userCity);
+            jsonObject.put(Constants.kResponseKeyUserCountry, userCountry);
+            jsonObject.put(Constants.kResponseKeyUserFirstName, userFirstName);
+            jsonObject.put(Constants.kResponseKeyUserLastName, userLastName);
+            jsonObject.put(Constants.kResponseKeyUserPhone1, userPhone1);
+            jsonObject.put(Constants.kResponseKeyUserPhone2, userPhone2);
+            jsonObject.put(Constants.kResponseKeyUserState, userState);
+            jsonObject.put(Constants.kResponseKeyUserZip, userZip);
+            jsonObject.put(Constants.kResponseKeyUserName, userEmail);
+            jsonObject.put(Constants.kResponseKeyUserPicture, userPicture);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         return jsonObject;
     }
 

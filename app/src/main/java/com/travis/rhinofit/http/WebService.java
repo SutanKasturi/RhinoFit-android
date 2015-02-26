@@ -271,7 +271,7 @@ public class WebService {
         return new HttpPostJsonArrayResult(context, "", params, callback);
     }
 
-    public static CustomAsyncHttpRequest addWallPostWithImage(Context context, Bitmap bitmap, String message, final HttpRequestJsonListener callback) {
+    public static CustomAsyncHttpRequest addWallPostWithImage(Context context, Bitmap image, String filePath, String message, final HttpRequestJsonListener callback) {
         JSONObject params = new JSONObject();
         try {
             params.put(Constants.kParamAction, Constants.kRequestAddWallPost);
@@ -280,7 +280,7 @@ public class WebService {
         catch (JSONException e) {
             e.printStackTrace();
         }
-        return new HttpPostImageJsonObjectResult(context, "", params, Constants.kParamFile, bitmap, callback);
+        return new HttpPostImageJsonObjectResult(context, "", params, Constants.kParamFile, image, filePath, callback);
     }
 
     public static CustomAsyncHttpRequest getCountries(Context context, final HttpRequestArrayListener callback) {
@@ -308,7 +308,8 @@ public class WebService {
 
     public static CustomAsyncHttpRequest updateUserInfo(Context context,
                                                         String paramString,
-                                                        Bitmap bitmap,
+                                                        Bitmap image,
+                                                        String filePath,
                                                         String firstName,
                                                         String lastName,
                                                         String address1,
@@ -339,6 +340,6 @@ public class WebService {
         catch (JSONException e) {
             e.printStackTrace();
         }
-        return new HttpPostImageJsonObjectResult(context, "", params, paramString, bitmap, callback);
+        return new HttpPostImageJsonObjectResult(context, "", params, paramString, image, filePath, callback);
     }
 }

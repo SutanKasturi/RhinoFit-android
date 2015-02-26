@@ -105,6 +105,8 @@ public class PostWallMessageFragment extends BaseImageChooserFragment {
     public void init() {
         messageEditText.setText("");
         removeImage();
+        isCrop = true;
+        isSquare = false;
     }
 
     private void removeImage() {
@@ -116,9 +118,9 @@ public class PostWallMessageFragment extends BaseImageChooserFragment {
 
     @Override
     public void setImage(Uri imageUri) {
-        Uri uriFromPath = Uri.fromFile(new File(imageUri.getPath()));
+//        Uri uriFromPath = Uri.fromFile(new File(imageUri.getPath()));
         try {
-            postPicture = BitmapFactory.decodeStream(parentActivity.getContentResolver().openInputStream(uriFromPath));
+            postPicture = BitmapFactory.decodeStream(parentActivity.getContentResolver().openInputStream(imageUri));
             postImageView.setImageBitmap(postPicture);
             postImageView.setVisibility(View.VISIBLE);
             pictureButton.setText("Remove Picture");
@@ -137,7 +139,7 @@ public class PostWallMessageFragment extends BaseImageChooserFragment {
             progressDialog.setMessage("Posting...");
             progressDialog.show();
 
-            WebService.addWallPostWithImage(parentActivity, postPicture, messageEditText.getText().toString(), new InterfaceHttpRequest.HttpRequestJsonListener() {
+            WebService.addWallPostWithImage(parentActivity, postPicture, filePath, messageEditText.getText().toString(), new InterfaceHttpRequest.HttpRequestJsonListener() {
                 @Override
                 public void complete(JSONObject result, String errorMsg) {
                     progressDialog.dismiss();

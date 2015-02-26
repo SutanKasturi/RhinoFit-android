@@ -60,7 +60,7 @@ public class MyProfileFragment extends BaseFragment implements UpdateProfileFrag
         updateMyProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                parentActivity.changeFragment(new UpdateProfileFragment());
+                parentActivity.changeFragment(UpdateProfileFragment.newInstance(MyProfileFragment.this));
             }
         });
         return view;
@@ -121,5 +121,6 @@ public class MyProfileFragment extends BaseFragment implements UpdateProfileFrag
     @Override
     public void didUpdateUserProfile() {
         setupProfile();
+        parentActivity.getMenuFragment().setUserInfo();
     }
 }

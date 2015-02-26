@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.soundcloud.android.crop.Crop;
 import com.travis.rhinofit.R;
 import com.travis.rhinofit.base.BaseFragment;
 import com.travis.rhinofit.base.BaseImageChooserFragment;
@@ -26,6 +27,7 @@ import com.travis.rhinofit.global.Constants;
 import com.travis.rhinofit.http.CustomAsyncHttpRequest;
 import com.travis.rhinofit.http.WebService;
 import com.travis.rhinofit.listener.InterfaceHttpRequest;
+import com.travis.rhinofit.models.JSONModel;
 import com.travis.rhinofit.models.User;
 import com.travis.rhinofit.utils.AlertUtil;
 import com.travis.rhinofit.utils.image.SmartImageTask;
@@ -74,7 +76,7 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
 
     CustomAsyncHttpRequest stateTask = null;
 
-    public UpdateProfileFragment newInstance(UpdateProfileListener callback) {
+    public static UpdateProfileFragment newInstance(UpdateProfileListener callback) {
         UpdateProfileFragment updateProfileFragment = new UpdateProfileFragment();
         updateProfileFragment.listener = callback;
         return updateProfileFragment;
@@ -141,6 +143,8 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
         user = appManager.getUser();
         setupProfile();
         setCountySpinner();
+        isCrop = true;
+        isSquare = true;
     }
 
     @Override
@@ -320,13 +324,14 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
         if ( isValidate == false )
             return;
 
-        ProgressDialog progressDialog = new ProgressDialog(parentActivity);
+        final ProgressDialog progressDialog = new ProgressDialog(parentActivity);
         progressDialog.setMessage("Updating...");
         progressDialog.show();
 
         WebService.updateUserInfo(parentActivity,
                 Constants.kParamFile,
                 userImage,
+                filePath,
                 firstNameTextView.getText().toString(),
                 lastNameTextView.getText().toString(),
                 address1EditText.getText().toString(),
@@ -341,8 +346,25 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
                 new InterfaceHttpRequest.HttpRequestJsonListener() {
                     @Override
                     public void complete(JSONObject result, String errorMsg) {
-                        if ( result != null ) {
-                            user.parseDictionary(result);
+                        progressDialog.dismiss();
+                        if ( result != null && !JSONModel.isNull(result, "success") && JSONModel.getIntFromJson(result, "success") == 1 ) {
+                            WebImageCache imageCache = new WebImageCache(parentActivity);
+                            imageCache.remove(user.getUserPicture());
+
+                            user.setUserFirstName(firstNameTextView.getText().toString());
+                            user.setUserLastName(lastNameTextView.getText().toString());
+                            user.setUserAddress1(address1EditText.getText().toString());
+                            user.setUserAddress2(address2EditText.getText().toString());
+                            user.setUserCity(cityEditText.getText().toString());
+                            user.setUserState(stateSpinner.getSelectedItem().toString());
+                            user.setUserZip(postalEditText.getText().toString());
+                            user.setUserCountry(countrySpinner.getSelectedItem().toString());
+                            user.setUserPhone1(homePhoneEditText.getText().toString());
+                            user.setUserPhone2(mobilePhoneEditText.getText().toString());
+                            user.setUserEmail(emailEditText.getText().toString());
+                            user.setUserPicture(JSONModel.getStringFromJson(result, "photo"));
+
+                            AppManager.getInstance(parentActivity).setUser(user);
                             if ( listener != null )
                                 listener.didUpdateUserProfile();
                             parentActivity.onBackPressed();
@@ -358,10 +380,11 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
 
     @Override
     public void setImage(Uri imageUri) {
-        Uri uriFromPath = Uri.fromFile(new File(imageUri.getPath()));
+//        Uri uriFromPath = Uri.fromFile(new File(imageUri.getPath()));
         try {
-            userImage = BitmapFactory.decodeStream(parentActivity.getContentResolver().openInputStream(uriFromPath));
+            userImage = BitmapFactory.decodeStream(parentActivity.getContentResolver().openInputStream(imageUri));
             avatarImageView.setImageBitmap(userImage);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

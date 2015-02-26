@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".Splash"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBarAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,8 +28,12 @@
         </activity>
 
         <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBarAppTheme"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
 
     </application>
 

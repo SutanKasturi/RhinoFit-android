@@ -56,19 +56,22 @@ public class WallRow extends LinearLayout {
         if ( wall != null ) {
             msgTextView.setText(wall.getMsg());
             userNameTextView.setText(wall.getName());
-            WebImageCache imageCache = new WebImageCache(context);
+//            WebImageCache imageCache = new WebImageCache(context);
 
             if ( wall.getImage() != null && !wall.getImage().isEmpty() ) {
+                System.out.println(wall.getMsg() + ":" + wall.getImage());
                 postImageView.setVisibility(View.VISIBLE);
-                Bitmap postImage = imageCache.get(wall.getImage());
-                if (postImage != null) {
-                    postImageView.setImageBitmap(postImage);
-                } else {
+//                Bitmap postImage = imageCache.get(wall.getImage());
+//                if (postImage != null) {
+//                    postImageView.setImageBitmap(postImage);
+//                } else {
                     postImageView.setImageUrl(wall.getImage(), new SmartImageTask.OnCompleteListener() {
                         @Override
                         public void onComplete(Bitmap bitmap) {
                             if ( bitmap != null )
                                 postImageView.setImageBitmap(bitmap);
+                            else
+                                wall.setImage("");
                         }
 
                         @Override
@@ -76,17 +79,17 @@ public class WallRow extends LinearLayout {
 
                         }
                     });
-                }
+//                }
             }
             else {
                 postImageView.setVisibility(View.GONE);
             }
 
-            Bitmap userImage = imageCache.get(wall.getProfileImage());
-            if ( userImage != null ) {
-                userImageView.setImageBitmap(userImage);
-            }
-            else {
+//            Bitmap userImage = imageCache.get(wall.getProfileImage());
+//            if ( userImage != null ) {
+//                userImageView.setImageBitmap(userImage);
+//            }
+//            else {
                 userImageView.setImageUrl(wall.getProfileImage(), new SmartImageTask.OnCompleteListener() {
                     @Override
                     public void onComplete(Bitmap bitmap) {
@@ -97,7 +100,7 @@ public class WallRow extends LinearLayout {
 
                     }
                 });
-            }
+//            }
         }
     }
 }

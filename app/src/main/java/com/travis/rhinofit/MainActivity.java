@@ -1,15 +1,21 @@
 package com.travis.rhinofit;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.kbeanie.imagechooser.api.ChooserType;
 import com.loopj.android.http.AsyncHttpClient;
+import com.soundcloud.android.crop.Crop;
 import com.travis.rhinofit.base.BaseFragment;
 import com.travis.rhinofit.base.BaseFragmentActivity;
+import com.travis.rhinofit.base.BaseImageChooserFragment;
 import com.travis.rhinofit.fragments.MenuFragment;
 
 import org.apache.http.conn.ConnectTimeoutException;
@@ -73,6 +79,9 @@ public class MainActivity extends BaseFragmentActivity {
         }
     }
 
+    public MenuFragment getMenuFragment() {
+        return menuFragment;
+    }
     public void switchContent(BaseFragment fragment) {
         // remove the current fragment from the stack.
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -166,6 +175,16 @@ public class MainActivity extends BaseFragmentActivity {
 
         if ( _mFragmentStack.size() == 1 ) {
             onSetNavButton(true);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == Crop.REQUEST_CROP ) {
+            ((BaseImageChooserFragment)mContent).handleCrop(data);
+        } else {
+
         }
     }
 }

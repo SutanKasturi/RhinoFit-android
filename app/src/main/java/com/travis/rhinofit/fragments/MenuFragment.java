@@ -64,6 +64,15 @@ public class MenuFragment extends Fragment {
         userNameTextView = (TextView) view.findViewById(R.id.menuUserNameTextView);
         menuListView = (ListView) view.findViewById(R.id.menuListView);
 
+        setUserInfo();
+
+        setupActions();
+        setupMenu();
+
+        return view;
+    }
+
+    public void setUserInfo() {
         User user = AppManager.getInstance(getActivity()).getUser();
         if ( user != null ) {
             WebImageCache imageCache = new WebImageCache(getActivity());
@@ -85,11 +94,6 @@ public class MenuFragment extends Fragment {
             }
             userNameTextView.setText(user.getUserEmail());
         }
-
-        setupActions();
-        setupMenu();
-
-        return view;
     }
 
     private void setupActions() {

@@ -19,11 +19,18 @@
         android:background="@drawable/wall_rounded_corner_blue"
         android:layout_marginBottom="3dp" />
 
-    <com.travis.rhinofit.utils.image.SmartImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/postImageView"
-        android:src="@color/secondary_text_disabled_material_light" />
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
+
+        <com.travis.rhinofit.utils.image.SmartImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/postImageView"
+            android:src="@color/secondary_text_disabled_material_light" />
+    </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -37,8 +44,9 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:id="@+id/userImageView"
-            android:layout_margin="1dp"
-            android:src="@color/color_dark_grey" />
+            android:layout_margin="2dp"
+            android:src="@color/color_dark_grey"
+            android:scaleType="fitCenter" />
 
         <TextView
             android:layout_width="match_parent"

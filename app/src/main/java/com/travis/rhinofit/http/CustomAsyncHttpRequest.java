@@ -149,8 +149,8 @@ public abstract class CustomAsyncHttpRequest implements InterfaceAsyncHttpReques
 
     public Header[] getRequestHeaders() {
         List<Header> headers = getRequestHeadersList();
-//        headers.add(new BasicHeader("Content-Type", "application/json"));
-//        headers.add(new BasicHeader("Accept", "application/json"));
+        headers.add(new BasicHeader("Content-Type", "application/json"));
+        headers.add(new BasicHeader("Accept", "application/json"));
         return headers.toArray(new Header[headers.size()]);
     }
 

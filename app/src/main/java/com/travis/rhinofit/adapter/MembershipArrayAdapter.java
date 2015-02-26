@@ -39,7 +39,7 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
 
             holder = new ViewHolder();
             holder.nameTextView = (TextView) v.findViewById(R.id.nameTextView);
-            holder.startAndEndTextView = (TextView) v.findViewById(R.id.startDateTextView);
+            holder.startAndEndTextView = (TextView) v.findViewById(R.id.startAndEndTextView);
             holder.renewsTextView = (TextView) v.findViewById(R.id.renewsTextView);
             holder.attendedTextView = (TextView) v.findViewById(R.id.attendedTextView);
             holder.limitTextView = (TextView) v.findViewById(R.id.limitTextview);
@@ -54,7 +54,6 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
         holder.startAndEndTextView.setText("Starts " + sdf.format(item.getStartDate()) + "\nand ends " + sdf.format(item.getEndDate()));
         holder.renewsTextView.setText(item.getRenewal());
-        holder.attendedTextView.setText(item.getAttended());
         if ( item.getAttendedLimit() > 0 )
             holder.attendedTextView.setText("You have attended " + item.getAttended() + " out of " + item.getAttendedLimit() + " classes");
         else

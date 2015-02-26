@@ -3,6 +3,7 @@ package com.travis.rhinofit.global;
 import android.content.Context;
 
 import com.travis.rhinofit.base.BaseAppManager;
+import com.travis.rhinofit.models.JSONModel;
 import com.travis.rhinofit.models.User;
 
 import org.json.JSONException;

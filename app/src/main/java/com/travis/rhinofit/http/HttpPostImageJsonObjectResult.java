@@ -2,11 +2,14 @@ package com.travis.rhinofit.http;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.Base64;
 import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.ResponseHandlerInterface;
@@ -19,6 +22,16 @@ import org.apache.http.HttpEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HttpPostImageJsonObjectResult extends CustomAsyncHttpRequest {
 
 	private static final String LOG_TAG = "HttpGetJsonResult";
@@ -26,13 +39,15 @@ public class HttpPostImageJsonObjectResult extends CustomAsyncHttpRequest {
 	HttpRequestJsonListener 	requestListener;
 
     String paramString;
-    Bitmap bitmap;
+    Bitmap image;
+    String filePath;
 
-	public HttpPostImageJsonObjectResult(Context context, String url, JSONObject params, String paramString, Bitmap bitmap, HttpRequestJsonListener callback) {
+	public HttpPostImageJsonObjectResult(Context context, String url, JSONObject params, String paramString, Bitmap image, String filePath, HttpRequestJsonListener callback) {
 		super(context, url, params);
 		this.requestListener = callback;
         this.paramString = paramString;
-        this.bitmap = bitmap;
+        this.image = image;
+        this.filePath = filePath;
 	}
 
 	public void setInterface(HttpRequestJsonListener callback) {
@@ -95,11 +110,19 @@ public class HttpPostImageJsonObjectResult extends CustomAsyncHttpRequest {
 			Header[] headers, HttpEntity entity,
 			ResponseHandlerInterface responseHandler) {
 		RequestParams params = getRequestParams();
-        if ( paramString != null && bitmap != null ) {
-            params.put(paramString, bitmap);
+        if ( paramString != null && filePath != null ) {
+            Date now = new Date();
+            try {
+                File file = new File(filePath);
+                params.put(paramString, file, now.getTime() + ".jpg");
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         Log.d(LOG_TAG, URL + "\n" + params.toString());
 		return client.post(_context, URL, params, responseHandler);
 	}
+
 
 }

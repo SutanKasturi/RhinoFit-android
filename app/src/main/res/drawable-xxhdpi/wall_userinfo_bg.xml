@@ -13,13 +13,5 @@
         android:width="@dimen/border_size"
         android:color="#222222" >
     </stroke>
-    
-    <!-- If you want to add some padding -->
-    <padding
-        android:left="@dimen/rounded_corner_padding"
-        android:top="@dimen/rounded_corner_padding"
-        android:right="@dimen/rounded_corner_padding"
-        android:bottom="@dimen/rounded_corner_padding"    >
-    </padding>
  
 </shape>

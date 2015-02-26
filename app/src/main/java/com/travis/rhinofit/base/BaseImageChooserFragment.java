@@ -2,6 +2,7 @@ package com.travis.rhinofit.base;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import com.kbeanie.imagechooser.api.ChooserType;
 import com.kbeanie.imagechooser.api.ChosenImage;
 import com.kbeanie.imagechooser.api.ImageChooserListener;
 import com.kbeanie.imagechooser.api.ImageChooserManager;
+import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 
@@ -22,8 +24,11 @@ public class BaseImageChooserFragment extends BaseFragment implements ImageChoos
 
     private ImageChooserManager imageChooserManager;
 
-    private String filePath;
+    public String filePath;
     private int chooserType;
+
+    public boolean isCrop;
+    public boolean isSquare;
 
     @Override
     public void setNavTitle() {
@@ -86,12 +91,18 @@ public class BaseImageChooserFragment extends BaseFragment implements ImageChoos
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK
-                && (requestCode == ChooserType.REQUEST_PICK_PICTURE || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
-            if (imageChooserManager == null) {
-                reinitializeImageChooser();
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK ) {
+            if (requestCode == ChooserType.REQUEST_PICK_PICTURE || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)
+            {
+                if (imageChooserManager == null) {
+                    reinitializeImageChooser();
+                }
+                imageChooserManager.submit(requestCode, data);
             }
-            imageChooserManager.submit(requestCode, data);
+            else if (requestCode == Crop.REQUEST_CROP) {
+                handleCrop(data);
+            }
         } else {
 
         }
@@ -104,7 +115,8 @@ public class BaseImageChooserFragment extends BaseFragment implements ImageChoos
             @Override
             public void run() {
                 if (image != null) {
-                    setImage(Uri.parse(new File(image.getFileThumbnail()).toString()));
+                    filePath = image.getFileThumbnail();
+                    cropImage(Uri.parse(new File(filePath).toString()));
                 }
             }
         });
@@ -131,5 +143,25 @@ public class BaseImageChooserFragment extends BaseFragment implements ImageChoos
         imageChooserManager.reinitialize(filePath);
     }
 
-    public void setImage(Uri imageUri){}
+    public void cropImage(Uri imageUri){
+        Uri uriFromPath = Uri.fromFile(new File(imageUri.getPath()));
+        if ( isCrop ) {
+            if ( isSquare ) {
+                new Crop(uriFromPath).output(uriFromPath).asSquare().start(parentActivity);
+            }
+            else {
+                new Crop(uriFromPath).output(uriFromPath).start(parentActivity);
+            }
+        }
+        else {
+            setImage(uriFromPath);
+        }
+    }
+
+    public void handleCrop(Intent result) {
+        setImage(Crop.getOutput(result));
+    }
+    public void setImage(Uri imageUri) {
+
+    }
 }

@@ -25,5 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.loopj.android:android-async-http:1.4.6'
     compile 'com.kbeanie:image-chooser-library:1.4.02@aar'
+    compile 'com.soundcloud.android:android-crop:0.9.10@aar'
     compile project(':SlidingMenu')
 }
