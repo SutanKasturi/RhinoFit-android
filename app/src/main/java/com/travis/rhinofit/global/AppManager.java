@@ -88,4 +88,9 @@ public class AppManager extends BaseAppManager {
         this.user = new User(jsonObject);
         setStringValue(USER, jsonObject.toString());
     }
+
+    public void removeUser() {
+        this.user = null;
+        setStringValue(USER, null);
+    }
 }

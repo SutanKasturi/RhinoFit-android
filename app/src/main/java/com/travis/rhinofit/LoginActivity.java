@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -99,6 +100,7 @@ public class LoginActivity extends Activity {
                         else  {
                             String token = JSONModel.getStringFromJson(result, Constants.kResponseKeyToken);
                             appManager.setToken(token);
+                            appManager.setLoggedIn(true);
                             getUserInfo();
                         }
                     }
@@ -145,7 +147,8 @@ public class LoginActivity extends Activity {
     }
 
     private void onOpenBrowser() {
-
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://my.rhinofit.ca/findrhinofitgym"));
+        startActivity(browserIntent);
     }
 
     private boolean isValidInput() {

@@ -107,6 +107,11 @@ public class MenuFragment extends Fragment {
                 }
                 else {
                     if ( item.getMenuId() == MenuIds.LOG_OUT ) {
+                        AppManager appManager = AppManager.getInstance(getActivity());
+                        appManager.setLoggedIn(false);
+                        appManager.setToken(null);
+                        appManager.removeUser();
+                        
                         Intent intent = new Intent(context, LoginActivity.class);
                         context.startActivity(intent);
 
