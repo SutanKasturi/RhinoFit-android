@@ -92,7 +92,7 @@ public class MyAttendanceFragment extends BaseFragment implements AttendanceRow.
     @Override
     public void setNavTitle() {
         int count = attendances == null ? 0 : attendances.size();
-        parentActivity.setNavTitle(String.format("My Attendances (%d)", count));
+        parentActivity.setNavTitle(String.format("My Attendance (%d)", count));
     }
 
     @Override
