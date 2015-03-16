@@ -156,6 +156,7 @@ public class BenchmarkHistoryFragment extends BaseFragment implements BenchmarkH
 
     private void setBenchmark() {
         if ( benchmarkHistorys.size() > 0 ) {
+            Collections.sort(benchmarkHistorys);
             BenchmarkHistory history = benchmarkHistorys.get(0);
             benchmark.setLastDate(history.getDate());
             benchmark.setLastScore(history.getValue());

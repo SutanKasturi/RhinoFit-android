@@ -114,6 +114,10 @@ public class MyBenchmarksFragment extends BaseFragment implements BenchmarkRow.B
     }
 
     private void getBenchmarks() {
+        if ( arrayAdapter != null ) {
+            arrayAdapter.clear();
+            arrayAdapter.notifyDataSetChanged();
+        }
         waitingLayout.showLoadingProgressBar();
         task = WebService.getMyBenchmarks(parentActivity, new InterfaceHttpRequest.HttpRequestArrayListener() {
             @Override
@@ -142,7 +146,8 @@ public class MyBenchmarksFragment extends BaseFragment implements BenchmarkRow.B
                             waitingLayout.showResult(Constants.kMessageNoMyBenchmarks);
                         }
                     }
-                    setNavTitle();
+                    if ( isResumed() )
+                        setNavTitle();
                 }
             }
         });
@@ -174,68 +179,69 @@ public class MyBenchmarksFragment extends BaseFragment implements BenchmarkRow.B
     // AddBenchmarkListener
     @Override
     public void onAddBenchmark(AddBenchmarkFragment.NewBenchmark newBenchmark) {
-        AvailableBenchmark availableBenchmark = newBenchmark.getSelectedBenchmark();
-        Date date = newBenchmark.getDate();
-        String result = newBenchmark.getMeasurement();
-
-        MyBenchmark selectedBenchmark = null;
-        int index = -1;
-
-        for ( int i = 0; i < benchmarks.size(); i++ ) {
-            MyBenchmark b = benchmarks.get(i);
-            if ( b.getBenchmarkId() >= availableBenchmark.getBenchmarkId() ) {
-                if ( b.getBenchmarkId() == availableBenchmark.getBenchmarkId() ) {
-                    selectedBenchmark = b;
-                }
-                index = i;
-            }
-        }
-
-        boolean isNew = false;
-        if ( selectedBenchmark == null ) {
-            isNew = true;
-            selectedBenchmark = new MyBenchmark();
-            selectedBenchmark.setBenchmarkId(availableBenchmark.getBenchmarkId());
-            selectedBenchmark.setTitle(availableBenchmark.getbDescription());
-            selectedBenchmark.setType(availableBenchmark.getbType());
-            if ( index < 0 ) {
-                index = benchmarks.size();
-            }
-        }
-
-        selectedBenchmark.setLastDate(date);
-        selectedBenchmark.setLastScore(result);
-
-        if ( isNew == false ) {
-            boolean isUpdated = false;
-            if ( availableBenchmark.getbType().equals("minutes:seconds") ||
-                    availableBenchmark.getbType().equals("min:sec") ) {
-                if ( getSeconds(result) > getSeconds(selectedBenchmark.getCurrentScore()) ) {
-                    isUpdated = true;
-                }
-            }
-            else {
-                if ( Integer.parseInt(result) > Integer.parseInt(selectedBenchmark.getCurrentScore()) ) {
-                    isUpdated = true;
-                }
-            }
-
-            if ( isUpdated ) {
-                selectedBenchmark.setCurrentDate(date);
-                selectedBenchmark.setCurrentScore(result);
-            }
-        }
-        else {
-            selectedBenchmark.setCurrentDate(date);
-            selectedBenchmark.setCurrentScore(result);
-            arrayAdapter.insert(selectedBenchmark, index);
-        }
-
-        if ( isNew ) {
-            if ( arrayAdapter.getCount() > 0 )
-                waitingLayout.setVisibility(View.GONE);
-        }
-        arrayAdapter.notifyDataSetChanged();
+        getBenchmarks();
+//        AvailableBenchmark availableBenchmark = newBenchmark.getSelectedBenchmark();
+//        Date date = newBenchmark.getDate();
+//        String result = newBenchmark.getMeasurement();
+//
+//        MyBenchmark selectedBenchmark = null;
+//        int index = -1;
+//
+//        for ( int i = 0; i < benchmarks.size(); i++ ) {
+//            MyBenchmark b = benchmarks.get(i);
+//            if ( b.getBenchmarkId() >= availableBenchmark.getBenchmarkId() ) {
+//                if ( b.getBenchmarkId() == availableBenchmark.getBenchmarkId() ) {
+//                    selectedBenchmark = b;
+//                }
+//                index = i;
+//            }
+//        }
+//
+//        boolean isNew = false;
+//        if ( selectedBenchmark == null ) {
+//            isNew = true;
+//            selectedBenchmark = new MyBenchmark();
+//            selectedBenchmark.setBenchmarkId(availableBenchmark.getBenchmarkId());
+//            selectedBenchmark.setTitle(availableBenchmark.getbDescription());
+//            selectedBenchmark.setType(availableBenchmark.getbType());
+//            if ( index < 0 ) {
+//                index = benchmarks.size();
+//            }
+//        }
+//
+//        selectedBenchmark.setLastDate(date);
+//        selectedBenchmark.setLastScore(result);
+//
+//        if ( isNew == false ) {
+//            boolean isUpdated = false;
+//            if ( availableBenchmark.getbType().equals("minutes:seconds") ||
+//                    availableBenchmark.getbType().equals("min:sec") ) {
+//                if ( getSeconds(result) > getSeconds(selectedBenchmark.getCurrentScore()) ) {
+//                    isUpdated = true;
+//                }
+//            }
+//            else {
+//                if ( Integer.parseInt(result) > Integer.parseInt(selectedBenchmark.getCurrentScore()) ) {
+//                    isUpdated = true;
+//                }
+//            }
+//
+//            if ( isUpdated ) {
+//                selectedBenchmark.setCurrentDate(date);
+//                selectedBenchmark.setCurrentScore(result);
+//            }
+//        }
+//        else {
+//            selectedBenchmark.setCurrentDate(date);
+//            selectedBenchmark.setCurrentScore(result);
+//            arrayAdapter.insert(selectedBenchmark, index);
+//        }
+//
+//        if ( isNew ) {
+//            if ( arrayAdapter.getCount() > 0 )
+//                waitingLayout.setVisibility(View.GONE);
+//        }
+//        arrayAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -264,6 +270,7 @@ public class MyBenchmarksFragment extends BaseFragment implements BenchmarkRow.B
             onDeleteBenchmark();
         }
         else
-            arrayAdapter.notifyDataSetChanged();
+            getBenchmarks();
+//            arrayAdapter.notifyDataSetChanged();
     }
 }
