@@ -99,7 +99,14 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
         homePhoneEditText = (CustomEditText) view.findViewById(R.id.homePhoneEditText);
         mobilePhoneEditText = (CustomEditText) view.findViewById(R.id.mobilePhoneEditText);
         emailEditText = (CustomEditText) view.findViewById(R.id.emailEditText);
-        emailEditText.setInputType(CustomEditText.EMAIL);
+
+        address1EditText.setType(CustomEditText.NONE);
+        address2EditText.setType(CustomEditText.NONE);
+        cityEditText.setType(CustomEditText.NONE);
+        postalEditText.setType(CustomEditText.NONE);
+        homePhoneEditText.setType(CustomEditText.NONE);
+        mobilePhoneEditText.setType(CustomEditText.NONE);
+        emailEditText.setType(CustomEditText.EMAIL);
 
         avatarImageView.setClickable(true);
         avatarImageView.setOnClickListener(new View.OnClickListener() {

@@ -11,7 +11,8 @@ import com.travis.rhinofit.utils.EmailValidator;
 public class CustomEditText extends EditText {
 	public static final int DEFAULT = 0;
 	public static final int EMAIL = 1;
-	
+	public static final int NONE = 2;
+
 	private int _mInputType = DEFAULT;
 	
 	public CustomEditText(Context context) {
@@ -39,7 +40,7 @@ public class CustomEditText extends EditText {
 				if ( hasFocus == true ) {
 					v.setActivated(false);
 				}
-				else if ( value.isEmpty() || (_mInputType == EMAIL && !CustomEditText.isEmailValid(value)) ) {
+				else if (_mInputType != NONE && (value.isEmpty() || (_mInputType == EMAIL && !CustomEditText.isEmailValid(value))) ) {
 					v.setActivated(true);
 				}
 			}
@@ -52,7 +53,7 @@ public class CustomEditText extends EditText {
 
 	public boolean isValidInput() {
 		String value = getText().toString();
-		if ( value.isEmpty() || (_mInputType == EMAIL && !CustomEditText.isEmailValid(value)) ) {
+		if ( _mInputType != NONE && (value.isEmpty() || (_mInputType == EMAIL && !CustomEditText.isEmailValid(value))) ) {
 			setActivated(true);
 			return false;
 		}

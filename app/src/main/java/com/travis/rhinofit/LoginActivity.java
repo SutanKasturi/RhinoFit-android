@@ -45,7 +45,7 @@ public class LoginActivity extends Activity {
         loginButton = (Button) findViewById(R.id.loginButton);
         linkButton = (Button) findViewById(R.id.linkButton);
 
-        emailEditText.setInputType(CustomEditText.EMAIL);
+        emailEditText.setType(CustomEditText.EMAIL);
 
         setActions();
     }
