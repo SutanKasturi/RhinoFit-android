@@ -34,10 +34,12 @@ public class DateUtils {
         String firstpart = datestring.substring(0, datestring.lastIndexOf('-'));
         String secondpart = datestring.substring(datestring.lastIndexOf('-'));
 
-        // step two, remove the colon from the timezone offset
-        secondpart = secondpart.substring(0, secondpart.indexOf(':'))
-                + secondpart.substring(secondpart.indexOf(':') + 1);
-        datestring = firstpart + secondpart;
+        if ( secondpart.indexOf(":") > 0 ) {
+            // step two, remove the colon from the timezone offset
+            secondpart = secondpart.substring(0, secondpart.indexOf(':'))
+                    + secondpart.substring(secondpart.indexOf(':') + 1);
+            datestring = firstpart + secondpart;
+        }
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");// spec for RFC3339
 
         try {
@@ -58,7 +60,7 @@ public class DateUtils {
     }
 
     public static Date parseDate(String datestring) {
-        Date d = new Date();
+        Date d = null;
         if ( datestring.length() == 10 ) {
             try {
                 SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,7 +69,7 @@ public class DateUtils {
                 return d;
             }
             catch (ParseException e) {
-
+                return null;
             }
         }
         else if ( datestring.length() == 16 ) {
@@ -77,6 +79,7 @@ public class DateUtils {
                 d = s.parse(datestring);
                 return d;
             } catch (ParseException e) {
+                return null;
             }
         }
         else if ( datestring.length() == 19 ) {
@@ -86,6 +89,7 @@ public class DateUtils {
                 return d;
             } catch (java.text.ParseException pe) {
                 pe.printStackTrace();
+                return null;
             }
         }
         else {

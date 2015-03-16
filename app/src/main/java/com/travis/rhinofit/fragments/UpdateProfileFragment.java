@@ -304,20 +304,20 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
             isValidate = false;
         if ( !lastNameTextView.isValidInput() )
             isValidate = false;
-        if ( !address1EditText.isValidInput() )
-            isValidate = false;
-        if ( !cityEditText.isValidInput() )
-            isValidate = false;
-        if ( stateSpinner.isEnabled() && stateSpinner.getSelectedItem() == null )
-            isValidate = false;
-        if ( countrySpinner.isEnabled() && countrySpinner.getSelectedItem() == null )
-            isValidate = false;
-        if ( !postalEditText.isValidInput() )
-            isValidate = false;
-        if ( !homePhoneEditText.isValidInput() )
-            isValidate = false;
-        if ( !mobilePhoneEditText.isValidInput() )
-            isValidate = false;
+//        if ( !address1EditText.isValidInput() )
+//            isValidate = false;
+//        if ( !cityEditText.isValidInput() )
+//            isValidate = false;
+//        if ( stateSpinner.isEnabled() && stateSpinner.getSelectedItem() == null )
+//            isValidate = false;
+//        if ( countrySpinner.isEnabled() && countrySpinner.getSelectedItem() == null )
+//            isValidate = false;
+//        if ( !postalEditText.isValidInput() )
+//            isValidate = false;
+//        if ( !homePhoneEditText.isValidInput() )
+//            isValidate = false;
+//        if ( !mobilePhoneEditText.isValidInput() )
+//            isValidate = false;
         if ( !emailEditText.isValidInput() )
             isValidate = false;
 

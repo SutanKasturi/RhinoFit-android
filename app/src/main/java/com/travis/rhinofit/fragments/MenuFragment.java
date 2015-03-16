@@ -111,7 +111,7 @@ public class MenuFragment extends Fragment {
                         appManager.setLoggedIn(false);
                         appManager.setToken(null);
                         appManager.removeUser();
-                        
+
                         Intent intent = new Intent(context, LoginActivity.class);
                         context.startActivity(intent);
 
