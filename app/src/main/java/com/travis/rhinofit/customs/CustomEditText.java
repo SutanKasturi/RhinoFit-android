@@ -69,6 +69,7 @@ public class CustomEditText extends EditText {
 	 * @return boolean true for valid false for invalid
 	 */
 	public static boolean isEmailValid(String email) {
-	    return (new EmailValidator()).validate(email);
+        boolean valid = (new EmailValidator()).validate(email);
+	    return valid;
 	}
 }
