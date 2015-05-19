@@ -108,13 +108,13 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
         mobilePhoneEditText.setType(CustomEditText.NONE);
         emailEditText.setType(CustomEditText.EMAIL);
 
-        avatarImageView.setClickable(true);
-        avatarImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialogSelectPhoto();
-            }
-        });
+        avatarImageView.setClickable(false);
+//        avatarImageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showDialogSelectPhoto();
+//            }
+//        });
 
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -337,8 +337,8 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
 
         WebService.updateUserInfo(parentActivity,
                 Constants.kParamFile,
-                userImage,
-                filePath,
+                null,
+                null,
                 firstNameTextView.getText().toString(),
                 lastNameTextView.getText().toString(),
                 address1EditText.getText().toString(),
