@@ -2,8 +2,10 @@ package com.travis.rhinofit.utils;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -220,5 +222,21 @@ public class DateUtils {
      */
     public static String formatDate(Date date) {
         return dateFormats[defaultFormat].format(date);
+    }
+
+    public static String formatTime(String dateString) {
+        dateString = dateString.trim();
+        String[] arr = dateString.split(":");
+        if ( arr.length < 3 || arr[0].length() < 2 || arr[2].length() < 2 )
+            return "";
+
+        arr[0] = arr[0].substring(arr[0].length() - 2);
+        int h = Integer.parseInt(arr[0]);
+        String ampm = "AM";
+        if ( h >= 12 ) {
+            h -= 12;
+            ampm = "PM";
+        }
+        return "" + h + ":" + arr[1] + " " + ampm;
     }
 }

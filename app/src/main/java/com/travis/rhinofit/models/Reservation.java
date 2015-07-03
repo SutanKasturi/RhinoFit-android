@@ -18,6 +18,7 @@ public class Reservation extends BaseModel implements Comparable<Reservation> {
     int reservationId;
     String title;
     Date when;
+    String whenString;
 
     boolean isActionReservation;
 
@@ -26,6 +27,7 @@ public class Reservation extends BaseModel implements Comparable<Reservation> {
             reservationId = JSONModel.getIntFromJson(jsonObject, Constants.kResponseKeyReservationId);
             title = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyReservationTitle);
             when = JSONModel.getDateFromJson(jsonObject, Constants.kResponseKeyReservationWhen);
+            whenString = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyReservationWhen);
         }
 
         isActionReservation = false;
@@ -74,6 +76,14 @@ public class Reservation extends BaseModel implements Comparable<Reservation> {
 
     public void setWhen(Date when) {
         this.when = when;
+    }
+
+    public String getWhenString() {
+        return whenString;
+    }
+
+    public void setWhenString(String when) {
+        this.whenString = when;
     }
 
     public boolean isActionReservation() {

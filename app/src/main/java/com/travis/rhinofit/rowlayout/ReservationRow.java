@@ -16,6 +16,7 @@ import com.travis.rhinofit.http.WebService;
 import com.travis.rhinofit.listener.InterfaceHttpRequest;
 import com.travis.rhinofit.models.Reservation;
 import com.travis.rhinofit.utils.AlertUtil;
+import com.travis.rhinofit.utils.DateUtils;
 
 import org.json.JSONObject;
 
@@ -84,9 +85,9 @@ public class ReservationRow extends LinearLayout {
 
         titleTextView.setText(reservation.getTitle());
         if ( reservation.getWhen() != null ) {
-            SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-            timeTextView.setText(sdf.format(reservation.getWhen()));
-            sdf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+//            SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+            timeTextView.setText(DateUtils.formatTime(reservation.getWhenString()));
+            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, MMMM dd, yyyy");
             whenTextView.setText(sdf.format(reservation.getWhen()));
         }
     }

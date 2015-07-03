@@ -90,7 +90,7 @@ public class MyReservationsFragment extends BaseFragment implements ReservationR
                     waitingLayout.showResult(errorMsg);
                 } else {
                     if (result.length() == 0) {
-                        waitingLayout.showResult(Constants.kMessageNoMyWods);
+                        waitingLayout.showResult(Constants.kMessageNoReservations);
                     } else {
                         waitingLayout.setVisibility(View.GONE);
                         for (int i = 0; i < result.length(); i++) {

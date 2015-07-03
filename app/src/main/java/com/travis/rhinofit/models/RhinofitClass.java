@@ -30,6 +30,7 @@ public class RhinofitClass extends BaseModel implements Comparable<RhinofitClass
     String origColor;
     Date startDate;
     Date endDate;
+    String startDateString;
 
     boolean isActionReservation;
     boolean isActionAttendance;
@@ -48,6 +49,7 @@ public class RhinofitClass extends BaseModel implements Comparable<RhinofitClass
             origColor           = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyOrigColor);
             startDate           = JSONModel.getDateFromJson(jsonObject, Constants.kResponseKeyStartDate);
             endDate             = JSONModel.getDateFromJson(jsonObject, Constants.kResponseKeyEndDate);
+            startDateString     = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyStartDate);
         }
 
 
@@ -172,6 +174,14 @@ public class RhinofitClass extends BaseModel implements Comparable<RhinofitClass
 
     public void setOrigColor(String origColor) {
         this.origColor = origColor;
+    }
+
+    public String getStartDateString() {
+        return startDateString;
+    }
+
+    public void setStartDateString(String startDate) {
+        this.startDateString = startDate;
     }
 
     public Date getStartDate() {

@@ -21,6 +21,7 @@ import com.travis.rhinofit.listener.InterfaceHttpRequest;
 import com.travis.rhinofit.models.JSONModel;
 import com.travis.rhinofit.models.RhinofitClass;
 import com.travis.rhinofit.utils.AlertUtil;
+import com.travis.rhinofit.utils.DateUtils;
 import com.travis.rhinofit.utils.DeviceSize;
 import com.travis.rhinofit.utils.ResourceSize;
 
@@ -128,8 +129,8 @@ public class ClassRow extends LinearLayout {
 
         titleTextView.setText(rfClass.getTitle());
         if ( rfClass.getStartDate() != null ) {
-            SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-            timeTextView.setText(sdf.format(rfClass.getStartDate()));
+//            SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+            timeTextView.setText(DateUtils.formatTime(rfClass.getStartDateString()));
         }
 
         if ( rfClass.getReservationId() > 0 && rfClass.getaId() > 0 ) {

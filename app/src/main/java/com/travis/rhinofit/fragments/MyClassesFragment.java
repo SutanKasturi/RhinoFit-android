@@ -235,6 +235,7 @@ public class MyClassesFragment extends BaseFragment implements ClassRow.ClassLis
                         waitingLayout.setVisibility(View.GONE);
                         for ( int i = 0; i < result.length(); i++ ) {
                             try {
+
                                 JSONObject jsonObject = result.getJSONObject(i);
                                 RhinofitClass rfclass = new RhinofitClass(jsonObject);
                                 if ( rfclass != null )
