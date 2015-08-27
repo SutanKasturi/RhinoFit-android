@@ -21,8 +21,9 @@ public class ClassArrayAdapter extends ArrayAdapter<RhinofitClass> {
 
     Context context;
     int resourceId;
-    Date selectedDate;
     ClassListener listener;
+
+    public Date selectedDate;
 
     public ClassArrayAdapter(Context context, int resource, ArrayList<RhinofitClass> objects, Date selectedDate, ClassListener callback) {
         super(context, resource, objects);

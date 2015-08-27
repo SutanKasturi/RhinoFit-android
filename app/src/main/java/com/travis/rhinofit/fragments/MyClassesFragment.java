@@ -210,6 +210,7 @@ public class MyClassesFragment extends BaseFragment implements ClassRow.ClassLis
         }
 
         arrayAdapter.clear();
+        arrayAdapter.selectedDate = currentDate;
 
         waitingLayout.showLoadingProgressBar();
 
