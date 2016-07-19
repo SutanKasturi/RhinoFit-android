@@ -60,6 +60,8 @@ public class LoginActivity extends Activity {
         emailEditText.setType(CustomEditText.EMAIL);
 
         setActions();
+
+        setUI();
     }
 
     private void setUI()    {
@@ -73,7 +75,7 @@ public class LoginActivity extends Activity {
         LinearLayout explain_view = (LinearLayout) findViewById(R.id.explain_view);
         LinearLayout fb_group = (LinearLayout) findViewById(R.id.fb_group);
 
-        if (height < 1280)  {
+        if (height < 1281)  {
             explain_view.setVisibility(View.GONE);
             fb_group.setVisibility(View.GONE);
             linkButton.setVisibility(View.GONE);
