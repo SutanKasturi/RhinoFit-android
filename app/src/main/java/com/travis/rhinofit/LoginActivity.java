@@ -8,11 +8,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.travis.rhinofit.customs.CustomEditText;
 import com.travis.rhinofit.global.AppManager;
@@ -56,6 +60,28 @@ public class LoginActivity extends Activity {
         emailEditText.setType(CustomEditText.EMAIL);
 
         setActions();
+    }
+
+    private void setUI()    {
+        WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        int height = size.y;
+
+        LinearLayout explain_view = (LinearLayout) findViewById(R.id.explain_view);
+        LinearLayout fb_group = (LinearLayout) findViewById(R.id.fb_group);
+
+        if (height < 1280)  {
+            explain_view.setVisibility(View.GONE);
+            fb_group.setVisibility(View.GONE);
+            linkButton.setVisibility(View.GONE);
+        } else  {
+            explain_view.setVisibility(View.VISIBLE);
+            fb_group.setVisibility(View.VISIBLE);
+            linkButton.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setActions() {

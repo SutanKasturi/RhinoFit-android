@@ -16,7 +16,8 @@
             android:layout_height="120dp"
             android:id="@+id/imageView3"
             android:src="@drawable/logo"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:minHeight="70dp"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="28dp"
                 android:textStyle="bold"
-                android:text="Rhino Fit"
+                android:text="RhinoFit"
                 android:textColor="#000000"
                 android:layout_toRightOf="@+id/login_to_lb"
                 android:id="@+id/app_name_lb"/>
@@ -51,21 +52,29 @@
                 android:layout_toRightOf="@+id/app_name_lb"/>
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#B8B8B8"
-            android:textSize="17dp"
-            android:text="Enter your credentials below"
-            android:layout_marginTop="24dp"/>
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="32dp"
-            android:background="#000000">
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/explain_view">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#B8B8B8"
+                android:textSize="17dp"
+                android:text="Enter your credentials below"
+                android:layout_marginTop="24dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="32dp"
+                android:background="#000000">
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <com.travis.rhinofit.customs.CustomEditText
             android:layout_width="match_parent"
@@ -89,62 +98,69 @@
             android:background="@drawable/rounded_edittext"
             android:textColor="@android:color/black" />
     </LinearLayout>
-    
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Login"
-        android:id="@+id/loginButton"
-        android:layout_marginTop="8dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/login_bt_bg"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/forget_bt"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:textColor="#B8B8B8"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_above="@+id/fb_group"
-        android:text="Forgot Password?"
-        android:id="@+id/forget_bt"
-        android:onClick="onResetPassword"/>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/linkButton"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/fb_group">
-        
-        <ImageView
-            android:layout_width="74dp"
-            android:layout_height="32dp"
-            android:src="@drawable/fb_like"
-            android:onClick="likeViaFB"/>
-        <ImageView
-            android:layout_width="74dp"
-            android:layout_height="32dp"
-            android:src="@drawable/fb_share"
-            android:onClick="shareViaFB"/>
-        
-    </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Find a RhinoFit gym near you"
-        android:id="@+id/linkButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@null"
-        android:textColor="#B8B8B8"
-        android:textSize="15dp"
-        android:minHeight="0dp"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Login"
+            android:id="@+id/loginButton"
+            android:textColor="@android:color/white"
+            android:background="@drawable/login_bt_bg"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="#B8B8B8"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:text="Forgot Password?"
+            android:id="@+id/forget_bt"
+            android:onClick="onResetPassword"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/fb_group">
+
+            <ImageView
+                android:layout_width="74dp"
+                android:layout_height="32dp"
+                android:src="@drawable/fb_like"
+                android:onClick="likeViaFB"/>
+            <ImageView
+                android:layout_width="74dp"
+                android:layout_height="32dp"
+                android:src="@drawable/fb_share"
+                android:onClick="shareViaFB"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find a RhinoFit Location near you"
+            android:id="@+id/linkButton"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:textColor="#B8B8B8"
+            android:textSize="15dp"
+            android:minHeight="0dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
 </RelativeLayout>
