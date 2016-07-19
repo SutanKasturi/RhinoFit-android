@@ -55,7 +55,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cancel Reservation"
+                android:text="Cancel Attendance"
                 android:id="@+id/attendanceButton"
                 android:layout_gravity="center_vertical|right"
                 android:background="@null"

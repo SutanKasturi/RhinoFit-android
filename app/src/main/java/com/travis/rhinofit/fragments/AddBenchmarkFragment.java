@@ -227,7 +227,7 @@ public class AddBenchmarkFragment extends BaseFragment {
                     @Override
                     public void onClick(View v) {
 
-                        if (!selectedBenchmark.getbType().equals("minutes:seconds") ||
+                        if (!selectedBenchmark.getbType().equals("minutes:seconds") &&
                                 !selectedBenchmark.getbType().equals("min:sec"))
                             return;
                         String[] minsec = measurementEditText.getText().toString().split(":");
