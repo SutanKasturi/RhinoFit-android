@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.travis.rhinofit.R;
@@ -42,7 +43,7 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
             holder.startAndEndTextView = (TextView) v.findViewById(R.id.startAndEndTextView);
             holder.renewsTextView = (TextView) v.findViewById(R.id.renewsTextView);
             holder.attendedTextView = (TextView) v.findViewById(R.id.attendedTextView);
-            holder.limitTextView = (TextView) v.findViewById(R.id.limitTextview);
+            holder.limitView = (LinearLayout) v.findViewById(R.id.limitView);
             v.setTag(holder);
         } else {
             holder = (ViewHolder) v.getTag();
@@ -61,10 +62,9 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
 
         if (item.getLimit().length() == 0)
         {
-            holder.limitTextView.setVisibility(View.GONE);
+            holder.limitView.setVisibility(View.GONE);
         } else {
-            holder.limitTextView.setVisibility(View.VISIBLE);
-            holder.limitTextView.setText(item.getLimit());
+            holder.limitView.setVisibility(View.VISIBLE);
         }
 
         return v;
@@ -75,6 +75,6 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
         TextView startAndEndTextView;
         TextView renewsTextView;
         TextView attendedTextView;
-        TextView limitTextView;
+        LinearLayout limitView;
     }
 }

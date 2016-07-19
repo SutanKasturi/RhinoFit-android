@@ -148,8 +148,6 @@ public class PostWallMessageFragment extends BaseImageChooserFragment {
                     if ( result != null ) {
                         if ( listener != null )
                             listener.didPostWallMessageWithImage();
-                        if (UtilsValues.messageHandler != null)
-                            UtilsValues.messageHandler.sendEmptyMessage(2);
                         parentActivity.onBackPressed();
                     }
                     else {
