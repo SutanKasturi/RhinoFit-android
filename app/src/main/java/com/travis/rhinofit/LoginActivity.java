@@ -2,8 +2,12 @@ package com.travis.rhinofit;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +21,12 @@ import com.travis.rhinofit.http.WebService;
 import com.travis.rhinofit.listener.InterfaceHttpRequest;
 import com.travis.rhinofit.models.JSONModel;
 import com.travis.rhinofit.utils.AlertUtil;
+import com.travis.rhinofit.utils.UtilsMethod;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**
  * Created by Sutan Kasturi on 2/9/15.
@@ -101,6 +109,15 @@ public class LoginActivity extends Activity {
                             String token = JSONModel.getStringFromJson(result, Constants.kResponseKeyToken);
                             appManager.setToken(token);
                             appManager.setLoggedIn(true);
+                            try {
+                                if (result.getInt("valideula") == 0)
+                                    UtilsMethod.saveBooleanInSharedPreferences(LoginActivity.this, "isFirstUser", true);
+                                else
+                                    UtilsMethod.saveBooleanInSharedPreferences(LoginActivity.this, "isFirstUser", false);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
                             getUserInfo();
                         }
                     }
@@ -140,8 +157,14 @@ public class LoginActivity extends Activity {
     }
 
     private void loggedIn() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+
+        if (UtilsMethod.getBooleanFromSharedPreferences(LoginActivity.this, "isFirstUser", false)) {
+            Intent intent = new Intent(LoginActivity.this, TermsActivity.class);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
 
         finish();
     }
@@ -165,5 +188,47 @@ public class LoginActivity extends Activity {
         imm.hideSoftInputFromWindow(emailEditText.getRootView().getWindowToken(), 0);
 
         return  valid1 && valid2;
+    }
+
+    public void onResetPassword(View view)  {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://my.rhinofit.ca/forgetpassword.php"));
+        startActivity(browserIntent);
+    }
+
+    public void likeViaFB(View view)    {
+        Intent intent;
+
+        try {
+            getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/"+"100010131700972"));
+        } catch (Exception e) {
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RhinoFitInc"));
+        }
+
+        startActivity(intent);
+    }
+
+    public void shareViaFB(View view)   {
+
+        Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, (String) view.getTag(R.string.app_name));
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, "www.rhinofit.ca");
+
+        PackageManager pm = view.getContext().getPackageManager();
+        List<ResolveInfo> activityList = pm.queryIntentActivities(shareIntent, 0);
+        for (final ResolveInfo app : activityList)
+        {
+            if ((app.activityInfo.name).startsWith("com.facebook.katana"))
+            {
+                final ActivityInfo activity = app.activityInfo;
+                final ComponentName name = new ComponentName(activity.applicationInfo.packageName, activity.name);
+                shareIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+                shareIntent.setComponent(name);
+                view.getContext().startActivity(shareIntent);
+                break;
+            }
+        }
     }
 }

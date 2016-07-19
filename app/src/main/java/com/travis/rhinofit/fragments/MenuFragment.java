@@ -46,8 +46,6 @@ public class MenuFragment extends Fragment {
 
     Context context;
 
-    SmartImageView      userPhotoImageView;
-    TextView            userNameTextView;
     ListView            menuListView;
     MenuArrayAdapter    menuArrayAdapter;
 
@@ -60,8 +58,6 @@ public class MenuFragment extends Fragment {
 
         context = getActivity();
 
-        userPhotoImageView = (SmartImageView) view.findViewById(R.id.menuUserPhotoImage);
-        userNameTextView = (TextView) view.findViewById(R.id.menuUserNameTextView);
         menuListView = (ListView) view.findViewById(R.id.menuListView);
 
         setUserInfo();
@@ -77,22 +73,6 @@ public class MenuFragment extends Fragment {
         if ( user != null ) {
             WebImageCache imageCache = new WebImageCache(getActivity());
             final Bitmap bitmap = imageCache.get(user.getUserPicture());
-            if ( bitmap != null ) {
-                userPhotoImageView.setImageBitmap(bitmap);
-            }
-            else {
-                userPhotoImageView.setImageUrl(user.getUserPicture(), new SmartImageTask.OnCompleteListener() {
-                    @Override
-                    public void onComplete(Bitmap bitmap1) {
-                        if ( bitmap1 != null)
-                            userPhotoImageView.setImageBitmap(bitmap1);
-                    }
-                    @Override
-                    public void onComplete() {
-                    }
-                });
-            }
-            userNameTextView.setText(user.getUserEmail());
         }
     }
 

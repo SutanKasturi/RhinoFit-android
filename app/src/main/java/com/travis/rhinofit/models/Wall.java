@@ -17,6 +17,7 @@ public class Wall extends BaseModel {
     String profileImage;
     String image;
     boolean yours;
+    boolean flaggable;
 
     public Wall(JSONObject jsonObject) {
         if ( jsonObject != null ) {
@@ -26,6 +27,7 @@ public class Wall extends BaseModel {
             profileImage = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyWallUserPicture);
             image = JSONModel.getStringFromJson(jsonObject, Constants.kResponseKeyWallPic);
             yours = JSONModel.getIntFromJson(jsonObject, Constants.kResponseKeyWallYours) == 1 ? true : false;
+            flaggable = JSONModel.getIntFromJson(jsonObject, Constants.kResponseKeyWallFlaggable) == 1 ? true : false;
         }
     }
     public Wall(Parcel in) {
@@ -92,6 +94,14 @@ public class Wall extends BaseModel {
 
     public boolean isYours() {
         return yours;
+    }
+
+    public boolean getFlaggable()  {
+        return flaggable;
+    }
+
+    public void setFlaggable(boolean flaggable) {
+        this.flaggable = flaggable;
     }
 
     public void setYours(boolean yours) {

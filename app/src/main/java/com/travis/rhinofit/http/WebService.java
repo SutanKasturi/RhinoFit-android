@@ -33,6 +33,33 @@ public class WebService {
         return new HttpPostJsonObjectResult(context, "", params, callback);
     }
 
+    // Eula
+    public static CustomAsyncHttpRequest getCurrentEula(Context context, String token, final HttpRequestJsonListener callback) {
+        JSONObject params = new JSONObject();
+        try {
+            params.put(Constants.kParamAction, Constants.kRequestEula);
+            params.put(Constants.kParamToken, token);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return new HttpPostJsonObjectResult(context, "", params, callback);
+    }
+
+    // Terms
+    public static CustomAsyncHttpRequest acceptEula(Context context, String token, String versionId, final HttpRequestJsonListener callback) {
+        JSONObject params = new JSONObject();
+        try {
+            params.put(Constants.kParamAction, Constants.kAcceptEula);
+            params.put(Constants.kParamToken, token);
+            params.put(Constants.kParamVersionID, versionId);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return new HttpPostJsonObjectResult(context, "", params, callback);
+    }
+
     // Get UserInfo
     public static CustomAsyncHttpRequest getUserInfo(Context context, final HttpRequestJsonListener callback) {
         JSONObject params = new JSONObject();

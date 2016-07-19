@@ -111,8 +111,8 @@
                 android:text="Track WOD"
                 android:id="@+id/trackWODButton"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/button_gray_bg"
-                android:minHeight="0dp" />
+                android:textColor="@android:color/white"
+                android:background="@drawable/login_bt_bg" />
         </LinearLayout>
     </ScrollView>
 

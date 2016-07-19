@@ -8,6 +8,8 @@ public class Constants {
 
     // Request
     public static final String kRequestLogin = "login";
+    public static final String kRequestEula = "getcurrenteula";
+    public static final String kAcceptEula = "accepteula";
     public static final String kRequestGetClasses = "getclasses";
 //public static final String kRequestGetUserInfo = "getuserinfo";
     public static final String kRequestMakeReservation = "makereservation";
@@ -69,12 +71,16 @@ public class Constants {
     public static final String kParamEmail = "email";
     public static final String kParamPassword = "password";
     public static final String kParamToken = "token";
+    public static final String kParamVersionID = "versionid";
     public static final String kParamStartDate = "startdate";
     public static final String kParamEndDate = "enddate";
     public static final String kParamClassTimeId = "classtimeid";
     public static final String kParamDate = "date";
     public static final String kParamResId = "resid";
     public static final String kParamAId = "aid";
+
+    public static final String kRequestReportPost = "flagpost";
+    public static final String kRequestDeletePost = "deletepost";
 
     public static final String kParamStart = "start";
     public static final String kParamWod = "wod";
@@ -117,6 +123,8 @@ public class Constants {
     public static final String kParamUserPhone2 = "u_phone2";
     public static final String kParamUserName = "u_username";
     public static final String kParamCountry = "country";
+
+    public static final String kParamWallID = "wallid";
 
 // CoreData Tables
     public static final String kCoreDataUserInfo = "UserInfo";
@@ -181,12 +189,13 @@ public class Constants {
     public static final String kResponseKeyAttendanceWhen = "when";
 
 // wall
-    public static final String kResponseKeyWallId = "id";
+    public static final String kResponseKeyWallId = "wallid";
     public static final String kResponseKeyWallMessage = "msg";
     public static final String kResponseKeyWallUserName = "name";
     public static final String kResponseKeyWallPic = "pic";
     public static final String kResponseKeyWallUserPicture = "profilepic";
     public static final String kResponseKeyWallYours = "yours";
+    public static final String kResponseKeyWallFlaggable = "flagable";
 
 // result
     public static final String kResponseKeyResult = "result";

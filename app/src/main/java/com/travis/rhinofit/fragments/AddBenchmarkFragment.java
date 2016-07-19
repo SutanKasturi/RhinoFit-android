@@ -31,6 +31,7 @@ import com.travis.rhinofit.models.JSONModel;
 import com.travis.rhinofit.models.MyBenchmark;
 import com.travis.rhinofit.utils.AlertUtil;
 import com.travis.rhinofit.utils.DurationPicker;
+import com.travis.rhinofit.utils.UtilsValues;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -225,6 +226,10 @@ public class AddBenchmarkFragment extends BaseFragment {
                 measurementEditText.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        if (!selectedBenchmark.getbType().equals("minutes:seconds") ||
+                                !selectedBenchmark.getbType().equals("min:sec"))
+                            return;
                         String[] minsec = measurementEditText.getText().toString().split(":");
                         int min = 0;
                         int sec = 0;
@@ -370,6 +375,9 @@ public class AddBenchmarkFragment extends BaseFragment {
                             if ( listener != null )
                                 listener.onDeleteBenchmark();
 
+                            if (UtilsValues.messageHandler != null)
+                                UtilsValues.messageHandler.sendEmptyMessage(1);
+
                             parentActivity.onBackPressed();
                         }
                         else {
@@ -410,6 +418,8 @@ public class AddBenchmarkFragment extends BaseFragment {
                             if ( listener != null )
                                 listener.onAddBenchmark(newBenchmark);
 
+                            if (UtilsValues.messageHandler != null)
+                                UtilsValues.messageHandler.sendEmptyMessage(1);
                             parentActivity.onBackPressed();
                         }
                         else {

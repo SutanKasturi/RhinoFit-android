@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent" android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#555555">
+        android:background="#cc1224">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -15,21 +15,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
-            <com.travis.rhinofit.utils.image.SmartImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/menuUserPhotoImage"
-                android:src="@drawable/avatar" />
-
-            <TextView
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="User name"
-                android:id="@+id/menuUserNameTextView"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8dp"
-                android:textColor="@android:color/white"
-                android:textSize="17dp" />
+                android:layout_height="120dp"
+                android:id="@+id/imageView3"
+                android:src="@drawable/white_rhino"
+                android:scaleType="fitCenter" />
+
         </LinearLayout>
 
         <RelativeLayout

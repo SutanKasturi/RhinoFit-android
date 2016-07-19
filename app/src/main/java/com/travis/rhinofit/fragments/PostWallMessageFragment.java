@@ -22,6 +22,8 @@ import com.travis.rhinofit.http.WebService;
 import com.travis.rhinofit.listener.InterfaceHttpRequest;
 import com.travis.rhinofit.utils.AlertUtil;
 import com.travis.rhinofit.utils.RealPathUtil;
+import com.travis.rhinofit.utils.UtilsMethod;
+import com.travis.rhinofit.utils.UtilsValues;
 
 import org.json.JSONObject;
 
@@ -146,6 +148,8 @@ public class PostWallMessageFragment extends BaseImageChooserFragment {
                     if ( result != null ) {
                         if ( listener != null )
                             listener.didPostWallMessageWithImage();
+                        if (UtilsValues.messageHandler != null)
+                            UtilsValues.messageHandler.sendEmptyMessage(2);
                         parentActivity.onBackPressed();
                     }
                     else {

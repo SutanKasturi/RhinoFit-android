@@ -29,7 +29,7 @@
             android:id="@+id/addBenchmarkButton"
             android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/activity_horizontal_margin"
-            android:background="@drawable/button_blue_bg"
+            android:background="@drawable/login_bt_bg"
             android:textColor="@android:color/white"
             android:textSize="17dp" />
 

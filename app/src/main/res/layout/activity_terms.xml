@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nav_background_color">
+
+    <ImageView
+        android:layout_width="113dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/white_rhino"
+        android:id="@+id/logo"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/logo"
+        android:layout_above="@+id/button_group"
+        android:background="@android:color/white"
+        android:layout_marginTop="16dp">
+
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/termsContent"/>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_group">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/check_box_false"
+                android:id="@+id/checkbox_terms"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/checkbox_terms"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"
+                android:layout_centerVertical="true"
+                android:text="I Accept These Terms and Conditions"/>
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="I Accept"
+            android:id="@+id/loginButton"
+            android:textColor="@android:color/white"
+            android:background="@drawable/login_bt_bg"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="42dp"
+            android:layout_marginBottom="24dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="tapSubmit"/>
+
+    </RelativeLayout>
+</RelativeLayout>

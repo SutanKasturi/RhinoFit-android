@@ -4,7 +4,7 @@
     <color name="radio_button_unselected_color">@android:color/transparent</color>
 
     <!-- NavBar -->
-    <color name="nav_background_color">#4ba7dc</color>
+    <color name="nav_background_color">#cc1224</color>
 
     <color name="border_color">#000000</color>
 

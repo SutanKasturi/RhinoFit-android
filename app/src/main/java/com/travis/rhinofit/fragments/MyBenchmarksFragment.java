@@ -1,6 +1,8 @@
 package com.travis.rhinofit.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.travis.rhinofit.listener.InterfaceHttpRequest;
 import com.travis.rhinofit.models.AvailableBenchmark;
 import com.travis.rhinofit.models.MyBenchmark;
 import com.travis.rhinofit.rowlayout.BenchmarkRow;
+import com.travis.rhinofit.utils.UtilsValues;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,6 +65,16 @@ public class MyBenchmarksFragment extends BaseFragment implements BenchmarkRow.B
                 parentActivity.changeFragment(AddBenchmarkFragment.newInstance(null, MyBenchmarksFragment.this));
             }
         });
+
+        UtilsValues.messageHandler = new Handler() {
+
+            public void handleMessage(Message msg) {
+
+                if (msg.what == 1) {
+                    init();
+                }
+            }
+        };
 
         addBenchmarkButton.setVisibility(View.GONE);
         return view;

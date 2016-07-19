@@ -1,6 +1,5 @@
 package com.travis.rhinofit.http;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;

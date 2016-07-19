@@ -312,7 +312,7 @@
             android:id="@+id/saveButton"
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
-            android:background="@drawable/button_blue_bg"
+            android:background="@drawable/login_bt_bg"
             android:textColor="@android:color/white"
             android:textSize="17dp" />
 

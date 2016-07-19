@@ -108,13 +108,13 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
         mobilePhoneEditText.setType(CustomEditText.NONE);
         emailEditText.setType(CustomEditText.EMAIL);
 
-        avatarImageView.setClickable(false);
-//        avatarImageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showDialogSelectPhoto();
-//            }
-//        });
+        avatarImageView.setClickable(true);
+        avatarImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialogSelectPhoto();
+            }
+        });
 
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -311,20 +311,20 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
             isValidate = false;
         if ( !lastNameTextView.isValidInput() )
             isValidate = false;
-//        if ( !address1EditText.isValidInput() )
-//            isValidate = false;
-//        if ( !cityEditText.isValidInput() )
-//            isValidate = false;
-//        if ( stateSpinner.isEnabled() && stateSpinner.getSelectedItem() == null )
-//            isValidate = false;
-//        if ( countrySpinner.isEnabled() && countrySpinner.getSelectedItem() == null )
-//            isValidate = false;
-//        if ( !postalEditText.isValidInput() )
-//            isValidate = false;
-//        if ( !homePhoneEditText.isValidInput() )
-//            isValidate = false;
-//        if ( !mobilePhoneEditText.isValidInput() )
-//            isValidate = false;
+        if ( !address1EditText.isValidInput() )
+            isValidate = false;
+        if ( !cityEditText.isValidInput() )
+            isValidate = false;
+        if ( stateSpinner.isEnabled() && stateSpinner.getSelectedItem() == null )
+            isValidate = false;
+        if ( countrySpinner.isEnabled() && countrySpinner.getSelectedItem() == null )
+            isValidate = false;
+        if ( !postalEditText.isValidInput() )
+            isValidate = false;
+        if ( !homePhoneEditText.isValidInput() )
+            isValidate = false;
+        if ( !mobilePhoneEditText.isValidInput() )
+            isValidate = false;
         if ( !emailEditText.isValidInput() )
             isValidate = false;
 
@@ -337,8 +337,8 @@ public class UpdateProfileFragment extends BaseImageChooserFragment {
 
         WebService.updateUserInfo(parentActivity,
                 Constants.kParamFile,
-                null,
-                null,
+                userImage,
+                filePath,
                 firstNameTextView.getText().toString(),
                 lastNameTextView.getText().toString(),
                 address1EditText.getText().toString(),

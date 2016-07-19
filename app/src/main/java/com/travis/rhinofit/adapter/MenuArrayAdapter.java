@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class MenuArrayAdapter extends ArrayAdapter<MenuItem> {
 	    } else {
 	        holder = (ViewHolder) v.getTag();
 	    }
+
+		v.setBackgroundColor(Color.parseColor("#cc1224"));
 		
 		// Set content
 		MenuItem item = getItem(position);

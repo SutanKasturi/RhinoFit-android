@@ -59,6 +59,14 @@ public class MembershipArrayAdapter extends ArrayAdapter<Membership> {
         else
             holder.attendedTextView.setText(item.getLimit() + " classes");
 
+        if (item.getLimit().length() == 0)
+        {
+            holder.limitTextView.setVisibility(View.GONE);
+        } else {
+            holder.limitTextView.setVisibility(View.VISIBLE);
+            holder.limitTextView.setText(item.getLimit());
+        }
+
         return v;
     }
 
